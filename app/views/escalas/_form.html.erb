@@ -1,0 +1,123 @@
+<%= form_for(@escala) do |f| %>
+  <% if @escala.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@escala.errors.count, "error") %> prohibited this escala from being saved:</h2>
+
+      <ul>
+      <% @escala.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table>
+<tr>
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome %>
+  </div>
+</tr>
+<tr>
+
+<td>
+	
+  	<div class="field">
+    	<%= f.number_field :no_1 %>
+ 	 </div>
+</td>
+
+<td>
+	<div class="field">
+        <%= f.number_field :no_2 %>
+  	</div>
+</td>
+
+<td>
+	 <div class="field">
+        <%= f.number_field :no_3 %>
+  	</div>
+</td>
+
+<td>
+	<div class="field">
+    	<%= f.number_field :no_4 %>
+  	</div>
+</td>
+
+<td>
+	<div class="field">
+    	<%= f.number_field :folga %>
+  	</div>
+</td>
+
+</tr>
+<tr>
+
+	<td>
+	<div class="field">
+	<%= f.select :color,  options_for_select([['manhã', '#ff8100'], ['tarde', '#fce86a'], ['noite', '#65c3ba'], ['noitada','#b44545'], ['folga', 'none']]) %>
+  	</div>
+	</td>
+
+	<td>
+	<div class="field">
+   	<%= f.select :color1,  options_for_select([['manhã', '#ff8100'], ['tarde', '#fce86a'], ['noite', '#65c3ba'], ['noitada','#b44545'], ['folga', 'none']]) %>
+  	</div>
+	</td>
+
+	<td>
+	<div class="field">
+   	<%= f.select :color2,  options_for_select([['manhã', '#ff8100'], ['tarde', '#fce86a'], ['noite', '#65c3ba'], ['noitada','#b44545'], 		['folga', 'none']]) %>
+  	</div>
+	</td>
+
+	<td>
+	<div class="field">
+  	<%= f.select :color3,  options_for_select([['manhã', '#ff8100'], ['tarde', '#fce86a'], ['noite', '#65c3ba'], ['noitada','#b44545'], 		['folga', 'none']]) %>
+  	</div>
+	</td>
+
+	<td>
+	<p> Valor obrigatório, <br> <b> folga de final de escala. </p>
+	</td>
+	
+
+</tr>
+
+<tr>
+
+	<td>
+	 <div class="field">
+    	<%= f.label :ano %><br>
+    	<%= f.number_field :ano %>
+  	</div>
+	</td>
+	 
+	
+	<td>
+	<div class="field">
+    	<%= f.label :dia %><br>
+    	<%= f.number_field :dia %>
+  	</div>
+	</td>
+
+</tr>
+  
+<tr>
+	<div>
+	<p>Todos os dados precisam ser preeenchidos. <br>Exemplo: <br><b>escala 3-manha 4-tardes 5-noites 4-folgas</b> <br> <br>Preencha 3 no primeiro campo, 4 no segundo, 5 no terceiro, zero no 4, e 4 nas folgas. Selecionando as opções abaixo. escolha o ano do calendário, e o primeiro dia do mês de janeiro que começa sua escala. </p>
+	</div>
+  
+</tr>  
+
+</table>
+  
+
+  
+  
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,130 @@
+<%= javascript_include_tag('script.js') %>
+
+    <%= javascript_tag do %>
+     	var cor = "<%= @escala.color %>";
+	var cor1 = "<%= @escala.color1 %>";
+	var cor2 = "<%= @escala.color2 %>";
+        var cor3 = "<%= @escala.color3 %>";
+	var no1 = <%= @escala.no_1 %>;
+	var no2 = <%= @escala.no_2 %>;
+	var no3 = <%= @escala.no_3 %>;
+	var no4 = <%= @escala.no_4 %>;
+	var ff = <%= @escala.folga %>;
+	var an = <%= @escala.ano %>;
+	var d = <%= @escala.dia %>;
+    <% end %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+<h2 id="nome_t"> <%= @escala.nome %> </h2>
+<h3>se o calendário não aparecer, atualize</h3>
+</p>
+
+<div>
+<table id='td'>
+	<tr>
+	<td>
+	<div id="box"> </div>
+	</td>
+	
+	<td>
+	<p> Manhã </p>
+	</td>
+	</tr>
+
+	<tr>
+	<td>
+	<div id="box2"> </div>
+	</td>
+	
+	<td>
+	<p> Tarde </p>
+	</td>
+	</tr>
+
+	<tr>
+	<td>
+	<div id="box3"> </div>
+	</td>
+	
+	<td>
+	<p> Noite </p>
+	</td>
+	</tr>
+
+	<tr>
+	<td>
+	<div id="box4"> </div>
+	</td>
+	
+	<td>
+	<p> Noitada </p>
+	</td>
+	</tr>
+
+
+</table>
+</div>
+
+<%= link_to 'Back', escalas_path, :id =>"btn" %>
+
+</p>
+
+<p>
+    <div id = "calendars-container">
+        <table>
+		<tr>
+		<td>
+            <div id='mes'>Janeiro</div><div id="janeiro"></div>
+            </td>
+            <td>
+            <div id='mes'>Fevereiro</div><div id="fevereiro"></div>
+            </td>
+            <td>
+            <div id='mes'>Março</div><div id="marco"></div>
+            </td>
+         </tr>
+		 <tr>
+		<td>
+            <div id='mes'>Abril</div><div id="abril"></div>
+            </td>
+            <td>
+            <div id='mes'>Maio</div><div id="maio"></div>
+            </td>
+            <td>
+            <div id='mes'>Junho</div><div id="junho"></div>
+            </td>
+         </tr>
+		 <tr>
+		<td>
+            <div id='mes'>Julho</div><div id="julho"></div>
+            </td>
+            <td>
+            <div id='mes'>Agosto</div><div id="agosto"></div>
+            </td>
+            <td>
+            <div id='mes'>Setembro</div><div id="setembro"></div>
+            </td>
+         </tr>
+		 <tr>
+		<td>
+            <div id='mes'>Outubro</div><div id="outubro"></div>
+            </td>
+            <td>
+            <div id='mes'>Novembro</div><div id="novembro"></div>
+            </td>
+            <td>
+            <div id='mes'>Dezembro</div><div id="dezembro"></div>
+            </td>
+         </tr>
+		</table>
+    </div>
+
+</p>
+
+
+
+
+<%= link_to 'Edit', edit_escala_path(@escala), :id => "btn" %> |
+

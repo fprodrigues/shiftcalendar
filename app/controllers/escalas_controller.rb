@@ -1,0 +1,76 @@
+class EscalasController < ApplicationController
+  before_action :set_escala, only: [:show, :edit, :update, :destroy]
+
+  # GET /escalas
+  # GET /escalas.json
+  def index
+    @escalas = Escala.all
+  end
+
+  # GET /escalas/1
+  # GET /escalas/1.json
+  def show
+
+
+  end
+
+  # GET /escalas/new
+  def new
+    @escala = Escala.new
+  end
+
+  # GET /escalas/1/edit
+  def edit
+  end
+
+  # POST /escalas
+  # POST /escalas.json
+  def create
+    @escala = Escala.new(escala_params)
+
+    respond_to do |format|
+      if @escala.save
+        format.html { redirect_to @escala, notice: 'A escala foi criada com sucesso.' }
+        format.json { render :show, status: :created, location: @escala }
+      else
+        format.html { render :new }
+        format.json { render json: @escala.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /escalas/1
+  # PATCH/PUT /escalas/1.json
+  def update
+    respond_to do |format|
+      if @escala.update(escala_params)
+        format.html { redirect_to @escala, notice: 'A escala foi atualizada com sucesso.' }
+        format.json { render :show, status: :ok, location: @escala }
+      else
+        format.html { render :edit }
+        format.json { render json: @escala.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /escalas/1
+  # DELETE /escalas/1.json
+  def destroy
+    @escala.destroy
+    respond_to do |format|
+      format.html { redirect_to escalas_url, notice: 'A escala foi excluida com sucesso.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_escala
+      @escala = Escala.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def escala_params
+      params.require(:escala).permit(:nome, :color, :color1, :color2, :color3, :no_1, :no_2, :no_3, :no_4, :folga, :ano, :dia)
+    end
+end

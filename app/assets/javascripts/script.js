@@ -1,0 +1,176 @@
+
+
+
+var turnos = new Object();
+
+
+window.onload = function () {
+	
+   	var color = cor;
+	var color1 = cor1;
+	var color2 = cor2;
+	var color3 = cor3;
+    	var no_1 = no1;
+	var no_2 = no2;
+	var no_3 = no3;
+	var no_4 = no4;
+    	var folga = ff;
+	var inicio_turno = d; // dia do inicio da escala -  first shift date;
+ 	var year = an;
+
+	var ciclo = no_1 + no_2 + no_3 + no_4 + folga;
+	var t1 = 0;
+	var t2 = 0;
+	var t3 = 0;
+	var t4 = 0;
+	var tf = 0;
+	// ajustar as dadas anteriores ao inicio do turno - setting previous turns for a full calendar.
+	var ano_anterior = year -1;
+	var resto_temp = inicio_turno - ciclo;
+	var temporaria = 31 + resto_temp; // resto_tempo é negativa - resto_temp is negative.
+	var date_temp = 12 + " " + temporaria +" " + ano_anterior;
+	var f_work = new Date(date_temp);
+	turnos.p1 = no_1;
+	turnos.p2 = no_2;
+	turnos.p3 = no_3;
+	turnos.p4 = no_4;
+	turnos.f1 = folga;
+	
+	 get_calendar(11, ano_anterior, color, color1, color2,color3, no_1, no_2, no_3, no_4, folga,t1,t2,t3,t4,tf,f_work);
+	
+	document.getElementById("janeiro").appendChild(get_calendar(0, year, color, color1, color2,color3, no_1, no_2, no_3, no_4, folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("fevereiro").appendChild(get_calendar(1, year, color,color1, color2,color3, no_1, no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("marco").appendChild(get_calendar(2, year, color, color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("abril").appendChild(get_calendar(3, year, color, color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("maio").appendChild(get_calendar(4, year, color, color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("junho").appendChild(get_calendar(5, year, color,color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("julho").appendChild(get_calendar(6, year, color,color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("agosto").appendChild(get_calendar(7, year, color, color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("setembro").appendChild(get_calendar(8, year, color,color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("outubro").appendChild(get_calendar(9, year, color, color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("novembro").appendChild(get_calendar(10, year, color, color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	document.getElementById("dezembro").appendChild(get_calendar(11, year, color, color1, color2,color3, no_1,no_2, no_3, no_4,folga,t1,t2,t3,t4,tf,f_work));
+	
+};
+
+
+
+function get_calendar(month , year ,color, color1, color2,color3, no_1, no_2, no_3, no_4, folga,t1,t2,t3,t4,tf,f_work) {
+	
+	var month_name = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September','October', 'November', 'December'];
+	var first_date = month_name[month] + " " + 1 + " " + year;
+    var tmp = new Date(first_date).toDateString();
+    var first_day = tmp.substring(0, 3);
+    var day_name = ['Sun', 'Mon', 'Tue', 'Wed', 'Wed', 'Thu', 'Fri'];
+    var day_tmp = day_name.indexOf(first_day); // position in week sun - fri;
+	var day_no = 0;
+	if (day_tmp == 0){ day_no =6 ;} else {day_no = day_tmp - 1};// shifts position to week mon - sun;
+	var days = new Date(year, month + 1, 0).getDate();
+	var mes = f_work.getMonth();
+	var data_inicio = new Date (year, mes);
+	var mes_inicio = new Date (year, month);
+	var tmp_comp = month+1; // variable compare's child - vinculado a variavel compare.
+	
+	t1 = turnos.p1;
+	t2 = turnos.p2;
+	t3 = turnos.p3;
+	t4 = turnos.p4;
+	tf= turnos.f1
+
+    var table = document.createElement('table'),
+        tr = document.createElement('tr');
+    
+    for ( var c = 0; c <= 6; c++) {
+        var td = document.createElement('td');
+        td.innerHTML='STQQSSD'[c];
+	tr.style.backgroundColor ='#dddddd';
+        tr.appendChild(td);
+    };
+    table.appendChild(tr);
+    
+    tr = document.createElement('tr');
+    for(var c = 0; c <= 6; c++) {
+        if (c == day_no){
+            break;
+        } 
+		var td = document.createElement('td');
+		td.innerHTML='';
+		tr.appendChild(td);
+	};
+		var count =1;
+    for (; c <= 6 ; c ++){
+        var td = document.createElement ('td');
+        td.innerHTML = count;
+		var compare = new Date (tmp_comp + " " + count + " "+ year);
+		if (f_work <= compare){
+			if (t1 > 0){
+				td.style.backgroundColor = color;
+				t1=t1-1;
+				tf=folga-1;
+			} else if (t2>0){
+				td.style.backgroundColor = color1;
+				t2=t2-1;
+			} else if (t3>0){
+				td.style.backgroundColor = color2;
+				t3=t3-1;
+			}else if (t4>0){
+				td.style.backgroundColor = color3;
+				t4=t4-1;
+			}else if (tf > 0) {
+				tf=tf-1;
+			} else if (tf == 0) {
+				t1 = no_1;
+				t2 = no_2;
+				t3 = no_3;
+				t4 = no_4;
+			}
+		}
+        count ++;
+        tr.appendChild (td);
+    }
+        table.appendChild (tr);
+        
+    for (var r = 3 ; r <= 7 ; r++){					// number of rows, rest.
+        var tr= document.createElement('tr');
+        for (var c = 0 ; c<=6; c++){
+            if(count > days){
+                table.appendChild(tr);
+				turnos.p1 = t1;
+				turnos.p2 = t2;
+				turnos.p3 = t3;
+				turnos.p4 = t4;
+				turnos.f1 = tf;
+                return table;
+            }
+            var td = document.createElement('td');
+            td.innerHTML=count;
+		compare = new Date (tmp_comp + " " + count + " "+ year);
+		if (f_work <= compare){
+			if (t1 > 0){
+				td.style.backgroundColor = color;
+				t1=t1-1;
+				tf=folga-1;
+			} else if (t2>0){
+				td.style.backgroundColor = color1;
+				t2=t2-1;
+			} else if (t3>0){
+				td.style.backgroundColor = color2;
+				t3=t3-1;
+			}else if (t4>0){
+				td.style.backgroundColor = color3;
+				t4=t4-1;
+			}else if (tf > 0) {
+				tf=tf-1;
+			} else if (tf == 0) {
+				t1 = no_1;
+				t2 = no_2;
+				t3 = no_3;
+				t4 = no_4;
+			}
+		}
+            count ++;
+            tr.appendChild (td);
+        } table.appendChild (tr);
+    }
+    
+}
