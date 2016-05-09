@@ -4,7 +4,7 @@
 var turnos = new Object();
 
 
-window.onload = function () {
+docum.onload = function () {
 	
    	var color = cor;
 	var color1 = cor1;

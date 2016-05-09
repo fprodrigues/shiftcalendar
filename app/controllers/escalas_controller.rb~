@@ -11,6 +11,7 @@ class EscalasController < ApplicationController
   # GET /escalas/1.json
   def show
 
+
   end
 
   # GET /escalas/new
@@ -29,7 +30,7 @@ class EscalasController < ApplicationController
 
     respond_to do |format|
       if @escala.save
-        format.html { redirect_to @escala, notice: 'A escala foi criada com sucesso.' }
+        format.html { redirect_to @escala, notice: 'A escala foi criada com sucesso'
         format.json { render :show, status: :created, location: @escala }
       else
         format.html { render :new }

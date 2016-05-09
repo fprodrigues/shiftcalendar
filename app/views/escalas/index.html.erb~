@@ -1,7 +1,7 @@
 <%= image_tag('peracalendar.png', :id =>'logo')%>
 <p id="notice"><%= notice %></p>
 
-<h3 id='texto_index'>Veja se a sua já está abaixo, senão, crie; se estiver errada, destrua e faça novamente.</h3>
+<h3 id='texto_index'>Se a escala for da sua empresa, depois que a imprimir, destrua.</h3>
 
 <table id = 'escala_index'>
   <thead>
@@ -15,11 +15,11 @@
   <tbody>
     <% @escalas.each do |escala| %>
       <tr>
-        <td><%= escala.nome %></td>
-         <td><%= escala.ano %></td>
-        <td><%= link_to 'Show', escala, :id =>"btn" %></td>
-        <td><%= link_to 'Edit', edit_escala_path(escala), :id =>"btn" %></td>
-        <td><%= link_to 'Destroy', escala, method: :delete, :id=>"btn", data: { confirm: 'Tem certeza? (Are you sure?)' } %></td>
+        <td><%= escala.nome  %></td>
+         <td><%= escala.ano  %></td>
+        <td><%= link_to 'Show', escala, :class =>"btn btn-success-outline", :id=>"es2" %></td>
+        <td><%= link_to 'Edit', edit_escala_path(escala), :class =>"btn btn-warning-outline", :id=>"es2"%></td>
+        <td><%= link_to 'Destroy', escala, method: :delete, :class=>"btn btn-danger-outline", :id=>"es2", data: { confirm: 'Tem certeza? (Are you sure?)' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Escala', new_escala_path,:id => 'btn_e' %>
+<%= link_to 'New Escala', new_escala_path,:class => 'btn btn-primary-outline' %>

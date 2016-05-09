@@ -14,12 +14,20 @@
 	var d = <%= @escala.dia %>;
     <% end %>
 
-<p id="notice"><%= notice %></p>
+<div class = "container-fluid">
+<% flash.each do |name, msg| %>
+	<div class='alert alert-<%= "#{name}" %>'>
+		<a href='#' class='close' data-dismiss='alert' &#215;></a>
+	<%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+	</div>
+<% end %>
 
-<p>
-<h2 id="nome_t"> <%= @escala.nome %> </h2>
-<h3>se o calendário não aparecer atualize</h3>
-</p>
+
+
+
+<div class="alert alert-warning" role="alert">
+<i>Nome da sua escala: </i> <h2> <%= @escala.nome %> </h2>
+</div>
 
 <div>
 <table id='td'>
@@ -67,13 +75,13 @@
 </table>
 </div>
 
-<%= link_to 'Back', escalas_path, :id =>"btn" %>
+<%= link_to 'Back', escalas_path, :class =>"btn btn-primary-outline" %>
 
 </p>
 
 <p>
     <div id = "calendars-container">
-        <table>
+        <table class="table table-bordered" id="teste">
 		<tr>
 		<td>
             <div id='mes'>Janeiro</div><div id="janeiro"></div>
@@ -126,5 +134,19 @@
 
 
 
-<%= link_to 'Edit', edit_escala_path(@escala), :id => "btn" %> |
+<%= link_to 'Edit', edit_escala_path(@escala), :class =>"btn btn-warning-outline" %> 
+
+<script type="text/javascript">
+$(document).ready(function(){    
+    //Check if the current URL contains '#'
+    if(document.URL.indexOf("#")==-1){
+        // Set the URL to whatever it was plus "#".
+        url = document.URL+"#";
+        location = "#";
+
+        //Reload the page
+        location.reload(true);
+    }
+});
+</script>
 
